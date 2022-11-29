@@ -1,6 +1,8 @@
 import json
+import os
 
-preferences_filepath = "/home/jtrvz/.config/google-chrome/Default/Preferences"
+home_dir = os.path.expanduser("~")
+preferences_filepath = f"{home_dir}/.config/google-chrome/Default/Preferences"
 
 with open(preferences_filepath, "r") as file:
     json_dict = json.load(file)
