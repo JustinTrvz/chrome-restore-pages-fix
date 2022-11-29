@@ -5,8 +5,6 @@
 
 ## 1. Download files
 <p>Download files to any directory.</p>
-<p>Change variable <b>preferences_filepath</b> in both Python files (.py) to <b>"/home/USERNAME/.config/google-chrome/Default/Preferences"</b> and replace <i>USERNAME</i> with your username.</p>
-<p></p>
 
 ## 2. Install python
 <p><i>Skip if already installed.</i></p>
