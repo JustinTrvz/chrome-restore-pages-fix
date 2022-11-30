@@ -1,6 +1,6 @@
 # Chrome "Restore Pages" Bug Fix
 <p><b>Applicable to:</b> Google Chrome/Chromium</p>
-<p><b>OS:</b> Linux Ubuntu 20.04.1</p>
+<p><b>Tested OS:</b> Linux Ubuntu 20.04.1</p>
 <p><b>Description:</b> Google Chrome crashes when shutting down. Starting Google Chrome will display a "Restore pages?" pop up. Following the instructions, will fix this problem.</p>
 
 ## 1. Download files
@@ -11,31 +11,26 @@
 <p>Python installation</p>
 
 ## 3. Create service
-`sudo gedit /etc/systemd/system/chromefix-before-shutdown.service`
+`sudo gedit /etc/systemd/system/chromefix-after-startup.service` 
 <p>Create new service file.</p>
 
 ```
 [Unit]
-Description=Chromefix before shutdown
-DefaultDependencies=no
-Before=shutdown.target
+Description=Chromefix after startup
 
 [Service]
-Type=oneshot
-ExecStart=<PATH_TO_CHROMEFIX.SH_FILE>
-TimeoutStartSec=0
+Type=simple
+ExecStart=<PATH_TO_REPOSITORY>/chromefix/chromefix.sh
 
 [Install]
-WantedBy=shutdown.target
+WantedBy=multi-user.target
 ```
 
-<p>Replace <i>PATH_TO_CHROMEFIX.SH_FILE</i> with the path to your <i>chromefix.sh</i> file.</p>
+<p>Replace <i>PATH_TO_REPOSITORY</i>.</p>
 
-`systemctl daemon-reload`
-`systemctl enable chromefix-before-shutdown.service`
+`systemctl daemon-reload`<br>
+`systemctl enable chromefix-before-shutdown.service`<br>
 <p>Makes service file available.</p>
 
 ## 4. Done!
-<p>This python script will be executed before shutting down your computer.</p>
-<p>Alternatively you can create a process that will be executed when starting your computer.</p>
-<p>Since on my computer many processes start when I boot, I set the execution in front of the shutdown process.</p>
+<p>This python script will be executed each time after startup.</p>
