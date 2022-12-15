@@ -11,26 +11,8 @@
 <p>Python installation</p>
 
 ## 3. Create service
-`sudo gedit /etc/systemd/system/chromefix-after-startup.service` 
-<p>Create new service file.</p>
-
-```
-[Unit]
-Description=Chromefix after startup
-
-[Service]
-Type=simple
-ExecStart=<PATH_TO_REPOSITORY>/chromefix/chromefix.sh
-
-[Install]
-WantedBy=multi-user.target
-```
-
-<p>Replace <i>PATH_TO_REPOSITORY</i>.</p>
-
-`systemctl daemon-reload`<br>
-`systemctl enable chromefix-before-shutdown.service`<br>
-<p>Makes service file available.</p>
+Add a new application to "Startup Applications".<br>
+Use this path `<PATH_TO_REPOSITORY>/chromefix/chromefix.sh` and replace _PATH_TO_REPOSITORY_ with your path to the repository.
 
 ## 4. Done!
 <p>This python script will be executed each time after startup.</p>
